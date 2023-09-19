@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "stark-tauri-meeting",
-    "version": "0.0.0"
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -37,7 +37,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "stark-tauri-meeting",
+        "title": "",
         "width": 800,
         "height": 600
       }
