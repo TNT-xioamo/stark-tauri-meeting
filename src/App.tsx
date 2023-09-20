@@ -1,14 +1,16 @@
 import React, { useState, memo } from 'react'
 import JMSLayoutMain from '@/views/main'
-import './App.css'
+import JMSAppSider from '@/layout/app-sider'
+import { AppWallpaper } from '@/views/main/app-style'
 
 function App() {
 
   return (
     <>
-      <div className="App">
+      <AppWallpaper className="app">
+        <JMSAppSider />
         <JMSLayoutMain />
-      </div>
+      </AppWallpaper>
     </>
   )
 }

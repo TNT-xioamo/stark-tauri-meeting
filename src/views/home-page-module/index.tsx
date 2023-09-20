@@ -1,9 +1,11 @@
 import React, { memo, Suspense } from 'react'
-
+import { HomeWallpaper } from './home-style-page'
 export default memo(function JMSHomeMain() {
   return (
     <>
-      这里是首页
+      <HomeWallpaper>
+        这里是首页
+      </HomeWallpaper>
     </>
   )
 })

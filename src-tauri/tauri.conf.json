@@ -38,8 +38,13 @@
         "fullscreen": false,
         "resizable": true,
         "title": "",
-        "width": 800,
-        "height": 600
+        "width": 1125,
+        "height": 690,
+        "minWidth": 1125,
+        "minHeight": 690,
+        "transparent": true,
+        "decorations": true,
+        "titleBarStyle": "Overlay"
       }
     ]
   }
