@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 export const AppWallpaper = styled.main`
   &.app {
-    height: calc(100vh - 25px);
+    height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
-    padding-top: 25px;
     background-image: linear-gradient(#835F99,#2F3264);
+    color: #fff;
   }
 `

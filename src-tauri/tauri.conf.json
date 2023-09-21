@@ -13,9 +13,14 @@
   "tauri": {
     "allowlist": {
       "all": false,
+
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "all": false,
+        "startDragging": true
       }
     },
     "bundle": {
@@ -38,10 +43,10 @@
         "fullscreen": false,
         "resizable": true,
         "title": "",
-        "width": 1125,
-        "height": 690,
-        "minWidth": 1125,
-        "minHeight": 690,
+        "width": 800,
+        "height": 600,
+        "minWidth": 800,
+        "minHeight": 600,
         "transparent": true,
         "decorations": true,
         "titleBarStyle": "Overlay"
