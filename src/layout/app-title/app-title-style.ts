@@ -9,7 +9,7 @@ export const TitleWallpaper = styled.div`
     z-index: 3;
     height: 25px;
     width: 100vw;
-    background: #826099;
+    background: ${props => props?.theme.page.top };
     cursor: pointer;
   }
 `

@@ -5,7 +5,7 @@ export const AppWallpaper = styled.main`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    background-image: linear-gradient(#835F99,#2F3264);
+    background-image: linear-gradient(${props => props.theme.page.top}, ${props => props.theme.page.bottom});
     color: #fff;
   }
 `
