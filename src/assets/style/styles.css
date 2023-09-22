@@ -12,10 +12,12 @@
   min-height: 100vh;
   min-width: 100vw;
   overflow: hidden;
+  border-radius: 30px;
 }
 body {
   margin: 0 !important;
   user-select: none;
+  border-radius: 30px;
 }
 .container {
   margin: 0;
@@ -110,4 +112,14 @@ button {
   button:active {
     background: linear-gradient(blue, pink);
   }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
 }

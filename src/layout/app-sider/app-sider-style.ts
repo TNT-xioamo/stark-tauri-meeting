@@ -14,9 +14,9 @@ export const SiderWallpaper = styled.div<Custom>`
   box-sizing: border-box;
   margin-left: 10px;
   margin-top: 25px;
-  -moz-box-shadow: 0px 0px 15px #9d82b1;
-  -webkit-box-shadow: 0px 0px 15px #9d82b1;
-  box-shadow: 0px 0px 15px #9d82b1;
+  -moz-box-shadow: 0px 0px 15px ${props => props?.theme.sider.top };
+  -webkit-box-shadow: 0px 0px 15px ${props => props?.theme.sider.top };
+  box-shadow: 0px 0px 15px ${props => props?.theme.sider.top };
   &:hover {
     animation: scale-up-center .7s cubic-bezier(.39,.575,.565,1.000) both;
   }
