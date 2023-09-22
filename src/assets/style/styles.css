@@ -19,6 +19,10 @@ body {
   user-select: none;
   border-radius: 30px;
 }
+* {
+  margin: 0;
+  padding: 0;
+}
 .container {
   margin: 0;
   padding-top: 10vh;
