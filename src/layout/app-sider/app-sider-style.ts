@@ -14,15 +14,19 @@ export const SiderWallpaper = styled.div<Custom>`
   box-sizing: border-box;
   margin-left: 10px;
   margin-top: 25px;
-  -moz-box-shadow: 0px 0px 15px ${props => props?.theme.sider.top };
-  -webkit-box-shadow: 0px 0px 15px ${props => props?.theme.sider.top };
-  box-shadow: 0px 0px 15px ${props => props?.theme.sider.top };
+  -moz-box-shadow: 0px 0px 10px ${props => props?.theme.sider.top };
+  -webkit-box-shadow: 0px 0px 10px ${props => props?.theme.sider.top };
+  box-shadow: 0px 0px 10px ${props => props?.theme.sider.top };
   &:hover {
     animation: scale-up-center .7s cubic-bezier(.39,.575,.565,1.000) both;
   }
   .ant-menu {
     background: none;
     border-inline-end: 0px !important;
+    .ant-menu-item-selected {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+    }
     .ant-menu-item {
       &:hover {
         svg {
