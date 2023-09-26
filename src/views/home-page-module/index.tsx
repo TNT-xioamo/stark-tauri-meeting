@@ -1,6 +1,6 @@
 import React, { memo, useRef, useState } from 'react'
 import { HomeWallpaper } from './home-style-page'
-import { Image, Space, Button, Checkbox, Form, Input } from 'antd';
+import { Image, Space, Button, Form, Input } from 'antd'
 import { BsMailbox, BsSuitSpadeFill } from 'react-icons/bs'
 
 

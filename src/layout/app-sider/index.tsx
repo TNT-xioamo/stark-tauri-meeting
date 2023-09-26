@@ -1,15 +1,24 @@
-import React, { type PropsWithChildren } from 'react'
+import React, { type PropsWithChildren, useEffect, useState } from 'react'
 import type { MenuProps } from 'antd'
 import { Menu } from 'antd'
 import { observer } from 'mobx-react-lite'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { CgBot, CgScreen, CgScreenMirror, CgInstagram, CgMaze, CgCommunity } from 'react-icons/cg'
 import { SiderWallpaper } from './app-sider-style'
 import { getMenuItem } from './sider-data'
 import { useStore } from '@/store'
 import { _acto_theme } from '@/utils'
+import { useMenuRoute } from '@/hooks/useMenuRoute'
 
 function JMSAppSider(_props: PropsWithChildren<{}>): JSX.Element {
   const { systemStore } = useStore()
+  const [selectedKey, setSelectedKey] = useMenuRoute(1)
+  const navigate = useNavigate()
+  // let { pathname } = useLocation()
+  // useEffect(() => {
+  //   setSelectedKeys([pathname]);
+  // }, [pathname]);
+
 
   const { theme } = systemStore.systemInfo || false
 
@@ -20,7 +29,7 @@ function JMSAppSider(_props: PropsWithChildren<{}>): JSX.Element {
   ]
 
   const _handle_on_select: MenuProps['onClick'] = (e) => {
-    console.log('handle_on_select', e)
+    // e && navigate( e?.key.includes('workbench') ? '/' :`/${e?.key}`)
     _handle_map_bg(e?.key)
   }
 
@@ -31,7 +40,7 @@ function JMSAppSider(_props: PropsWithChildren<{}>): JSX.Element {
   return (
     <>
       <SiderWallpaper theme={theme}>
-        <Menu mode="inline" defaultSelectedKeys={['workbench']} items={menus} onClick={(el) => _handle_on_select(el)} />
+        <Menu mode="inline" defaultSelectedKeys={[selectedKey]} items={menus} onClick={(el) => _handle_on_select(el)} onSelect={({ key }) => setSelectedKey(key)} />
       </SiderWallpaper> 
     </>
   )
