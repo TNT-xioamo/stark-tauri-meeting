@@ -11,7 +11,16 @@ import '@/assets/style/animista.css'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Router>
-      <ConfigProvider direction="ltr" theme={{ token: { colorPrimary: '#806b92', colorTextBase: '#fff' }, }} componentSize={'small'}>
+      <ConfigProvider direction="ltr" theme={{ 
+        token: { colorPrimary: '#806b92', colorTextBase: '#fff', colorPrimaryHover: '#806b92' }, 
+        components: {
+          Input: {
+            activeBorderColor: '#795a93',
+          },
+          Button: {
+            groupBorderColor: '#795a93',
+          }
+      }}} componentSize={'small'}>
         <StoreProvider initialValue={{ user: {} }}>
           <App />
         </StoreProvider>

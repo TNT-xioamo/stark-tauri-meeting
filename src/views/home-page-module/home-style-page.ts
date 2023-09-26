@@ -59,12 +59,69 @@ export const HomeWallpaper = styled.div`
       bottom: 0px;
       opacity: 0;
       z-index: -2;
+      padding: 15px;
+      backdrop-filter: blur(3px);
       &.slide-in-bottom {
         z-index: 2;
         animation: slide-in-bottom 1.2s cubic-bezier(.25,.46,.45,.94) both;
       }
       &.slide-out-bottom {
         animation: slide-out-bottom .75s cubic-bezier(.25,.46,.45,.94) both;
+      }
+      .ant-space {
+        .ant-form {
+          .form__title {
+            text-align: center;
+            background: linear-gradient(to right, red, blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding-bottom: 15px;
+          }
+          .ant-input-affix-wrapper {
+            padding: 10px 12px;
+            background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            transition: background-image .5s;
+
+          }
+          .ant-input {
+            color: #768bbc;
+            background-color: rgba(2,2,2, 0);
+            box-shadow: none;
+            &::placeholder {
+              color: #768bbc;
+              padding-left: 6px;
+            }
+          }
+          .ant-input-suffix, .ant-input-prefix {
+            .ant-input-password-icon {
+              color: #768bbc;
+            }
+          }
+          .ant-btn-link {
+            box-shadow: none;
+          }
+          .flex-spn {
+            .ant-form-item-control-input-content {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+          }
+        }
+        .form-sign_in {
+          
+        }
+        .form-sign_up {
+          display: none;
+        }
+        .sign_show {
+          animation: slide-in-right .5s cubic-bezier(.25,.46,.45,.94) both;
+        }
+        .sign_out {
+          display: none;
+          animation: slide-out-left .5s cubic-bezier(.25,.46,.45,.94) both;
+        }
       }
     }
   }
