@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
+import { _acto_theme } from '@/utils'
 
 export function useMenuRoute(index: number) {
   const { pathname } = useLocation()

@@ -5,6 +5,10 @@
 @keyframes shadow-drop-2-center{0%{transform:translateZ(0);box-shadow:0 0 0 0 transparent}100%{transform:translateZ(50px);box-shadow:0 0 20px 0 rgba(136,218,255,.35)}}
 @keyframes slide-in-right {0%{transform: translateX(1000px);opacity:0}100%{transform: translateX(0);opacity:1}}
 @keyframes slide-out-left{0%{transform:translateX(0);opacity:1}100%{transform:translateX(-1000px);opacity:0}}
+
+@-webkit-keyframes changeright{ 0%{-webkit-transform:rotate(0deg);} 50%{-webkit-transform:rotate(180deg);} 100%{-webkit-transform:rotate(360deg);} }
+
+
 @keyframes slide-in-bottom {
   0%{
     transform: translateY(-50px);
@@ -41,6 +45,26 @@
     z-index: -2;
   }
 }
+@keyframes slide-in-right-row {
+  0%{
+    transform: translateX(-50px);
+    opacity: 1;
+  }
+  50%{
+    width: 100px;
+    height: 100px;
+    border-radius: 30%;
+    transform: translateX(-40vh);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    width: 40vw;
+    height: 70vh;
+    border-radius: 15px;
+    transform: translateX(-62vh) translateY(-25vh);
+  }
+}
 
 @keyframes scale-h5-w5 {
   from { height: 0px; width: 0px; }
@@ -58,3 +82,5 @@
 @keyframes text-pop-up-top{0%{transform:translateY(0);transform-origin:50% 50%;text-shadow:none}100%{transform:translateY(-50px);transform-origin:50% 50%;text-shadow:0 1px 0 #ccc,0 2px 0 #ccc,0 3px 0 #ccc,0 4px 0 #ccc,0 5px 0 #ccc,0 6px 0 #ccc,0 7px 0 #ccc,0 8px 0 #ccc,0 9px 0 #ccc,0 50px 30px rgba(0,0,0,.3)}}
 
 @keyframes heartbeat{from{transform:scale(1);transform-origin:center center;animation-timing-function:ease-out}10%{transform:scale(.91);animation-timing-function:ease-in}17%{transform:scale(.98);animation-timing-function:ease-out}33%{transform:scale(.87);animation-timing-function:ease-in}45%{transform:scale(1);animation-timing-function:ease-out}}
+
+@keyframes bg-pan-top{0%{background-position:50% 100%}100%{background-position:50% 0}}

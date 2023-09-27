@@ -109,9 +109,6 @@ export const HomeWallpaper = styled.div`
             }
           }
         }
-        .form-sign_in {
-          
-        }
         .form-sign_up {
           display: none;
         }
