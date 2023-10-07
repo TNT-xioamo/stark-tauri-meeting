@@ -1,7 +1,7 @@
 import React, { type PropsWithChildren, memo } from 'react'
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { ImSpinner9, ImPacman, ImUser } from 'react-icons/im'
-import { Image, Space, Checkbox, Form, Input } from 'antd'
+import { Checkbox, Form, Input } from 'antd'
 
 function JMSModalConference(_props: PropsWithChildren<{ isModalOpen: String | undefined, setClose: Function }>): JSX.Element {
   const { isModalOpen, setClose } = _props

@@ -20,7 +20,8 @@
       },
       "window": {
         "all": false,
-        "startDragging": true
+        "startDragging": true,
+        "create": true
       }
     },
     "bundle": {

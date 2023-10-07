@@ -1,0 +1,6 @@
+.app > div:first-child {
+  display: none;
+}
+#root > div:first-child{
+  display: none;
+}

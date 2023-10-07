@@ -1,4 +1,5 @@
 import React, { type PropsWithChildren, memo, useState, useRef } from 'react'
+import { WebviewWindow } from '@tauri-apps/api/window'
 import { DiIonic } from 'react-icons/di'
 import { BiSolidPlusCircle, BiSolidChart, BiSolidCalendarCheck } from 'react-icons/bi'
 import JMSModalConference from './children/modal-conference'
@@ -12,6 +13,21 @@ function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
   const _handle_conference_click = (key?: String) => {
     setModalOpen(key)
   }
+  const create_conference_win = () => {
+    const win = new WebviewWindow('conference-room', {
+      url: '/conference-room',
+      title: 'Conference Room',
+      width: 600,
+      height: 450,
+    })
+    win.once('tauri://created', (e: Object) =>{
+      console.log(win)
+    })
+    win.once('tauri://error', function (e: Object) {
+      const { payload } = e as any
+      console.error(payload)
+    })
+  }
 
   return (
     <>
@@ -22,7 +38,7 @@ function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
               <BiSolidPlusCircle />
               <span>加入会议</span>
             </div>
-            <div className='item flex-center' onClick={() =>_handle_conference_click('fast')}>
+            <div className='item flex-center' onClick={() => create_conference_win()}>
               <BiSolidChart />
               <span>快速会议</span>
             </div>

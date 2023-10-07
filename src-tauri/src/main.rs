@@ -7,6 +7,22 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+// fn create_win() {
+//     tauri::Builder::default()
+//         .setup(|app| {
+//         let docs_window = tauri::WindowBuilder::new(
+//         app,
+//         "external", /* the unique window label */
+//         tauri::WindowUrl::External("https://tauri.app/".parse().unwrap())
+//         ).build()?;
+//         let local_window = tauri::WindowBuilder::new(
+//         app,
+//         "local",
+//         tauri::WindowUrl::App("index.html".into())
+//         ).build()?;
+//         Ok(())
+//     })
+// }
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![greet])
