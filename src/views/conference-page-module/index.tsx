@@ -17,8 +17,8 @@ function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
     const win = new WebviewWindow('conference-room', {
       url: '/conference-room',
       title: 'Conference Room',
-      width: 600,
-      height: 450,
+      width: 960,
+      height: 560,
     })
     win.once('tauri://created', (e: Object) =>{
       console.log(win)

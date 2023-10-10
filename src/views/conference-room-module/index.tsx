@@ -1,10 +1,14 @@
 import React, { type PropsWithChildren, memo } from 'react'
+import JMSZoomOperate from './children/room-operate'
 import './room-style.css'
+import { ZoomContainer } from './room-style'
 
 function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
   return (
     <>
-      <div className="jumbotron">会议室</div>
+      <ZoomContainer>
+        <JMSZoomOperate />
+      </ZoomContainer>
     </>
   )
 }
