@@ -25,6 +25,9 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
         setMediaStreamTrack(stream)
         liveVideo.current.play()
       }
+      if (liveAudio.current) {
+        console.error(stream)
+      }
       // video.addEventListener('canplay', onVideoCanPlay, false)
     })
   }
@@ -53,6 +56,10 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
     } else {
       console.log(mediaStreamTrack)
     }
+  }
+
+  const _handle_live_audio = (stream) => {
+
   }
   return (
     <>
