@@ -6,21 +6,13 @@ import { StoreProvider } from '@/store'
 import App from './App'
 import '@/assets/style/styles.css'
 import '@/assets/style/animista.css'
+import { _component_theme } from '@/utils'
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Router>
-      <ConfigProvider direction="ltr" theme={{ 
-        token: { colorPrimary: '#806b92', colorTextBase: '#fff', colorPrimaryHover: '#806b92' }, 
-        components: {
-          Input: {
-            activeBorderColor: '#795a93',
-          },
-          Button: {
-            groupBorderColor: '#795a93',
-          }
-      }}} componentSize={'small'}>
+      <ConfigProvider direction="ltr" theme={ _component_theme } componentSize={'small'}>
         <StoreProvider initialValue={{ user: {} }}>
           <App />
         </StoreProvider>

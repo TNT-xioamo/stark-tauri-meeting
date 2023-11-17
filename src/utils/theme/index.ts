@@ -40,3 +40,8 @@ export const _acto_theme = (el: String, cb: any) => {
   const action: any = menuActo.get(`${el}`) || menuActo.get('default')
   action.call()
 }
+
+export const _component_theme = {
+  token: { colorPrimary: '#806b92', colorTextBase: '#fff', colorPrimaryHover: '#806b92' },
+  components: { Input: { activeBorderColor: '#795a93' }, Button: { groupBorderColor: '#795a93' }}
+}
