@@ -2,8 +2,7 @@ export type ISystemInfo = {
   theme?: {
     page?: {top: string, bottom: string},
     sider?: {top: string, bottom: string},
-  },
-  
+  }
 }
 
 export interface ISystemStore {

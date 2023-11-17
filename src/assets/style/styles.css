@@ -120,12 +120,19 @@ button {
   }
 }
 
+.flex {
+  display: flex;
+}
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.flex {
-  display: flex;
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-j-e {
+  justify-content: flex-end;
 }

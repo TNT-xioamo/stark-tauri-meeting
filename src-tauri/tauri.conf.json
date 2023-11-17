@@ -13,13 +13,12 @@
   "tauri": {
     "allowlist": {
       "all": false,
-
       "shell": {
         "all": false,
         "open": true
       },
       "window": {
-        "all": false,
+        "all": true,
         "startDragging": true,
         "create": true
       }

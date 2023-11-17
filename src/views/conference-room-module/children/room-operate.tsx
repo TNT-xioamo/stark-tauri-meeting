@@ -1,25 +1,30 @@
-import React, { type PropsWithChildren, memo, useEffect, useState, useRef } from 'react'
-import type { MenuProps } from 'antd'
-import { Dropdown, Space } from 'antd'
-import { AiTwotoneAudio, AiOutlineDown, AiFillCamera } from 'react-icons/ai'
+import React, { type PropsWithChildren, useEffect, useState, useRef } from 'react'
+import { observer } from 'mobx-react-lite'
+import { useStore } from '@/store'
+import { AiOutlineAudio, AiOutlineAudioMuted } from 'react-icons/ai'
+import { FaVideo, FaVideoSlash } from 'react-icons/fa'
+
 
 function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
   const [userMedia, setUserMedia] = useState([])
+  const [audioWave, setAudioWave] = useState(0)
+  const { roomStore } = useStore()
+  const { mediaState } = roomStore.zoomInfo
   const [mediaStreamTrack, setMediaStreamTrack] = useState<MediaStream>()
 
-  const [videoConstraint, setVideoConstraint] = useState({
-    width: { min: 1280},
-    height: { min: 720},
-    facingMode: { exact: 'environment'}
+  const [videoConstraint] = useState({
+    video: { width: { min: 1280}, height: { min: 720}},
+    audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true}
   })
   const liveVideo = useRef<HTMLVideoElement>(null)
   const liveAudio = useRef<HTMLAudioElement>(null)
-  
+
+
   useEffect(() => {
-    _open_user_media()
+    // _get_user_media()
   }, userMedia)
   const _open_user_media = () => {
-    navigator.mediaDevices.getUserMedia({ video: videoConstraint, audio: false }).then((stream) => {
+    navigator.mediaDevices.getUserMedia(videoConstraint).then((stream) => {
       if (liveVideo.current) {
         liveVideo.current.srcObject = stream
         setMediaStreamTrack(stream)
@@ -31,48 +36,57 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
       // video.addEventListener('canplay', onVideoCanPlay, false)
     })
   }
-  const _get_user_media = () => {
-    // const cameradevices = []
-    // const promise = navigator.mediaDevices.enumerateDevices().then((devices) => {
-    //   devices.forEach
-    //   for (let index = 0; index < devices.length; index++) {
-    //     const device = devices[index]
-    //     if (device.kind === 'videoinput') {
-    //       cameradevices.push({ label: device.label, id: device.deviceId });
-    //     }
-    //   }
-    // })
+  const _get_user_media = async () => {
+    try {
+      // const stream = await navigator.mediaDevices.enumerateDevices()
+      const stream = await navigator.mediaDevices.getUserMedia(videoConstraint)
+      console.error(stream)
+    } catch (error) {
+      
+    }
   }
 
-  const _handle_live =() => {
+  const _handle_live_void =() => {
     if (mediaStreamTrack && liveVideo.current) {
       mediaStreamTrack?.getTracks().forEach(el => {
-        console.log(el)
         el.enabled = false
         el.stop()
       })
       liveVideo.current.srcObject = null
       liveVideo.current.pause()
     } else {
-      console.log(mediaStreamTrack)
+      console.error(mediaStreamTrack)
     }
   }
 
-  const _handle_live_audio = (stream) => {
-
+  const _handle_live_audio = () => {
+    try {
+      roomStore.setZoomInfoInfo({ mediaState: { isAudio: !mediaState?.isAudio } })
+    } catch (error) {
+      
+    }
   }
+
   return (
     <>
       <div className='zoom-default flex-center'>
         <video ref={liveVideo} id='liveVideo' src="" className='zoom-void' width="100%" height="100%"></video>
         <audio ref={liveAudio} id='liveAudio' src="" controls autoPlay className='zoom-audio'></audio>
+        <div className='user-canvas' id='user-annotations'></div>
         <div className="zoom-operate flex">
-          <div className='audio'><AiTwotoneAudio /></div>
-          <div className='void'><AiFillCamera onClick={() => _handle_live()} /></div>
+          <div className='operate-media flex'>
+            <div className='audio flex flex-column' onClick={() => _handle_live_audio()}>
+              { mediaState?.isAudio ? <AiOutlineAudio size={21} /> : <AiOutlineAudioMuted size={21} /> }
+              <div className='audio-voice flex flex-column flex-j-e'><div className='audio-wave' style={{ height: `${audioWave}px` }}></div></div>
+            </div>
+            <div className='void' onClick={() => _handle_live_void()}>{ mediaState?.isVideo ? <FaVideo size={21} /> : <FaVideoSlash size={21} /> }</div>
+          </div>
+          <div className='operate-user'></div>
+          <div className='operate-over'></div>
         </div>
       </div>
     </>
   )
 }
 
-export default memo(JMSZoomOperate)
+export default observer(JMSZoomOperate)
