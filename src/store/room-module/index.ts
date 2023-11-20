@@ -6,10 +6,10 @@ export type IZoomInfo = {
   }
 }
 
-
 export interface IZoomStore {
   zoomInfo: IZoomInfo
-  setZoomInfoInfo: (systemInfo: IZoomInfo) => void
+  SET_ZOOM_INFO: (systemInfo: IZoomInfo) => void,
+  SET_MEDIA_STATE: (systemInfo: object) => void
 }
 
 
@@ -21,8 +21,11 @@ const roomStore= (): IZoomStore => {
         isAudio: true,
       }
     },
-    setZoomInfoInfo: function (value: IZoomInfo) {
+    SET_ZOOM_INFO: function (value: IZoomInfo) {
       this.zoomInfo = { ...this.zoomInfo, ...value }
+    },
+    SET_MEDIA_STATE: function (value: object) {
+      this.zoomInfo.mediaState = { ...this.zoomInfo?.mediaState, ...value }
     }
   }
 }

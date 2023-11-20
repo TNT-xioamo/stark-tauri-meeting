@@ -21,25 +21,21 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
 
 
   useEffect(() => {
-    // _get_user_media()
+    _get_user_media()
   }, userMedia)
-  const _open_user_media = () => {
-    navigator.mediaDevices.getUserMedia(videoConstraint).then((stream) => {
+
+  const _get_user_media = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia(videoConstraint)
+      setMediaStreamTrack(stream)
       if (liveVideo.current) {
         liveVideo.current.srcObject = stream
-        setMediaStreamTrack(stream)
         liveVideo.current.play()
       }
       if (liveAudio.current) {
-        console.error(stream)
+        liveAudio.current.srcObject = stream
+        liveAudio.current.play()
       }
-      // video.addEventListener('canplay', onVideoCanPlay, false)
-    })
-  }
-  const _get_user_media = async () => {
-    try {
-      // const stream = await navigator.mediaDevices.enumerateDevices()
-      const stream = await navigator.mediaDevices.getUserMedia(videoConstraint)
       console.error(stream)
     } catch (error) {
       
@@ -47,21 +43,29 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
   }
 
   const _handle_live_void =() => {
-    if (mediaStreamTrack && liveVideo.current) {
-      mediaStreamTrack?.getTracks().forEach(el => {
-        el.enabled = false
-        el.stop()
-      })
-      liveVideo.current.srcObject = null
-      liveVideo.current.pause()
-    } else {
-      console.error(mediaStreamTrack)
+    try {
+      const videoTra = mediaStreamTrack?.getVideoTracks()[0]
+      if (videoTra && mediaState?.isVideo && liveVideo.current) {
+        console.log(videoTra)
+        liveVideo.current.srcObject = null
+        // videoTra.enabled = false
+        // videoTra.stop()
+      }
+    } catch (error) {
+      
     }
   }
 
   const _handle_live_audio = () => {
     try {
-      roomStore.setZoomInfoInfo({ mediaState: { isAudio: !mediaState?.isAudio } })
+      const audioTra = mediaStreamTrack?.getAudioTracks()[0]
+      if (audioTra && mediaState?.isAudio) {
+        audioTra.stop()
+
+      } else {}
+      console.log(audioTra)
+      // liveAudio.current && liveAudio.current()
+      roomStore.SET_MEDIA_STATE({ isAudio: !mediaState?.isAudio })
     } catch (error) {
       
     }
