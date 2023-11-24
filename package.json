@@ -11,8 +11,10 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@ad113n/opencv-wasm": "^4.8.0",
     "@tauri-apps/api": "^1.4.0",
     "antd": "^5.9.1",
+    "crypto-js": "^4.2.0",
     "localforage": "^1.10.0",
     "mobx": "^6.10.2",
     "mobx-react-lite": "^4.0.4",

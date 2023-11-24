@@ -17,7 +17,7 @@ export const ConferenceWallpaper = styled.div`
         margin: 10px 0;
         &:hover {
           box-shadow: 0px 5px 8px 1px #cd7ea7;
-          background: linear-gradient(0deg,#cc6aa5,#623ECC,#EB16A4);
+          background: linear-gradient(0deg,#BF6ACC,#C642A1,#DD60D5);
           animation: bg-pan-top 2s both;
           background-size: 100% 600%;
           svg {

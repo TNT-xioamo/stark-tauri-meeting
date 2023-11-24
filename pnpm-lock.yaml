@@ -5,12 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@ad113n/opencv-wasm':
+    specifier: ^4.8.0
+    version: 4.8.0
   '@tauri-apps/api':
     specifier: ^1.4.0
     version: 1.4.0
   antd:
     specifier: ^5.9.1
     version: 5.9.1(react-dom@18.2.0)(react@18.2.0)
+  crypto-js:
+    specifier: ^4.2.0
+    version: 4.2.0
   localforage:
     specifier: ^1.10.0
     version: 1.10.0
@@ -60,6 +66,10 @@ devDependencies:
     version: 4.4.4
 
 packages:
+
+  /@ad113n/opencv-wasm@4.8.0:
+    resolution: {integrity: sha512-zFf8p362Il2ytUQhMSj0kKEnal86JjpIPfx1Lr9/gy322yDfmK3otqIx2LxNBWeziJ31C3QvQEGxGiKgNOvf3Q==}
+    dev: false
 
   /@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
@@ -2277,6 +2287,10 @@ packages:
     resolution: {integrity: sha512-+GjlguTDINOijtVRUxrQOv3kfu9rl+qPNdX2LTbJ/ZyVTuxK+ksVSAGX1nHstu4hrv1En/uPTtWgq2gI5wt4AQ==}
     dependencies:
       browserslist: 4.21.10
+    dev: false
+
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
     dev: false
 
   /css-color-keywords@1.0.0:

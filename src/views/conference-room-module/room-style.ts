@@ -9,7 +9,7 @@ export const ZoomContainer = styled.div`
     height: 100%;
     .zoom-void {
       background-color: #000;
-      border-radius: 10px;
+      /* border-radius: 10px; */
       object-fit: cover;
       transform: rotateY(180deg);
       background-color: #fff;
@@ -19,6 +19,7 @@ export const ZoomContainer = styled.div`
       top: 0;
       right: 0;
       z-index: 2;
+      display: none;
     }
     .zoom-operate {
       position: fixed;
@@ -29,8 +30,10 @@ export const ZoomContainer = styled.div`
       z-index: 2;
       border-radius: 10px;
       padding: 10px;
-      box-shadow: -10px -10px 20px 10px #B8CAE6 inset;
+      box-shadow: -10px -10px 20px 10px #D3D5DD inset;
+      svg { color: #333; }
       .operate-media {
+        flex: 1;
         .audio {
           font-size: 12px;
           position: relative;
@@ -53,6 +56,12 @@ export const ZoomContainer = styled.div`
         }
         .void {
           margin-left: 15px;
+        }
+      }
+      .operate-user {
+        flex: 2;
+        .operate-user_item {
+          margin-left: 20px;
         }
       }
     }

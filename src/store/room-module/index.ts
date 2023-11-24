@@ -3,6 +3,7 @@ export type IZoomInfo = {
   mediaState?: {
     isVideo?:  boolean
     isAudio?: boolean,
+    isShare?: boolean
   }
 }
 
@@ -19,6 +20,7 @@ const roomStore= (): IZoomStore => {
       mediaState: {
         isVideo: true,
         isAudio: true,
+        isShare: false,
       }
     },
     SET_ZOOM_INFO: function (value: IZoomInfo) {
