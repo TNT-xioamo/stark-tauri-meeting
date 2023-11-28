@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useRef, useState, useEffect } from 'react'
 import { HomeWallpaper } from './home-style-page'
 import { Image, Space, Button, Form, Input } from 'antd'
 import { BsMailbox, BsSuitSpadeFill } from 'react-icons/bs'
@@ -18,6 +18,8 @@ export default memo(function JMSHomeMain() {
     remember?: string
   }
 
+  useEffect(() => {
+  },[])
   const _handle_start = () => {
     if (!isStartOpen) {
       refStart.current?.classList.add('slide-in-bottom')

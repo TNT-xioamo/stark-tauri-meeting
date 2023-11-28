@@ -7,9 +7,12 @@ export const ZoomContainer = styled.div`
     box-sizing: content-box;
     width: 100%;
     height: 100%;
+    .zoom-watermark {
+      width: 100%;
+      height: 100%;
+    }
     .zoom-void {
-      background-color: #000;
-      /* border-radius: 10px; */
+      /* background-color: #000; */
       object-fit: cover;
       transform: rotateY(180deg);
       background-color: #fff;
@@ -32,6 +35,13 @@ export const ZoomContainer = styled.div`
       padding: 10px;
       box-shadow: -10px -10px 20px 10px #D3D5DD inset;
       svg { color: #333; }
+      .operate-user_item {
+        border-radius: 7px;
+        padding: 5px 10px;
+        &:hover {
+          background-color: #CACACA;
+        }
+      }
       .operate-media {
         flex: 1;
         .audio {

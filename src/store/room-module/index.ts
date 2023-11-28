@@ -9,8 +9,8 @@ export type IZoomInfo = {
 
 export interface IZoomStore {
   zoomInfo: IZoomInfo
-  SET_ZOOM_INFO: (systemInfo: IZoomInfo) => void,
-  SET_MEDIA_STATE: (systemInfo: object) => void
+  SET_ZOOM_INFO: (zoomInfo: IZoomInfo) => void,
+  SET_MEDIA_STATE: (zoomInfo: object) => void
 }
 
 
