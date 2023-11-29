@@ -96,8 +96,6 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
 
   const _handle_group_users = async () => {
 
-    // const invoke = window?.__TAURI__?.invoke
-    // const dt = window?.navigator?.getSystemInfo()?.macAddress
   }
 
   return (
