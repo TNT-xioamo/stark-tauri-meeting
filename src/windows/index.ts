@@ -14,10 +14,10 @@ export const windowConfig = {
   label: null,            // 窗口唯一label
   title: '',              // 窗口标题
   url: '',                // 路由地址url
-  width: 900,             // 窗口宽度
-  height: 640,            // 窗口高度
-  minWidth: null,         // 窗口最小宽度
-  minHeight: null,        // 窗口最小高度
+  width: 960,             // 窗口宽度
+  height: 560,            // 窗口高度
+  minWidth: 580,         // 窗口最小宽度
+  minHeight: 500,        // 窗口最小高度
   x: null,                // 窗口相对于屏幕左侧坐标
   y: null,                // 窗口相对于屏幕顶端坐标
   center: true,           // 窗口居中显示
@@ -61,12 +61,13 @@ class Windows {
       win.maximize()
     }
     // 窗口创建完毕/失败
-    win.once('tauri://created', async () => {
+    win.once('tauri://created', async (e) => {
       console.log('window create success!')
     })
-    win.once('tauri://error', async() => {
-      console.log('window create error!')
+    win.once('tauri://error', async(e) => {
+      console.log('window create error!', e)
     })
+    
   }
 
   // 开启主进程监听事件
