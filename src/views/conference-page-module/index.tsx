@@ -1,10 +1,11 @@
 import React, { type PropsWithChildren, memo, useState, useRef } from 'react'
-// import { WebviewWindow } from '@tauri-apps/api/window'
+import { appWindow } from '@tauri-apps/api/window'
 import Windows from '@/windows'
 import { DiIonic } from 'react-icons/di'
 import { BiSolidPlusCircle, BiSolidChart, BiSolidCalendarCheck } from 'react-icons/bi'
 import JMSModalConference from './children/modal-conference'
 import { ConferenceWallpaper } from './conference-style-page'
+import { useStore } from '@/store'
 
 
 function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
@@ -14,9 +15,8 @@ function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
   const _handle_conference_click = (key?: String) => {
     setModalOpen(key)
   }
-  const create_conference_win = () => {
-    const win = new Windows()
-    win.createWin({
+  const create_conference_win = async () => {
+    Windows.createWin({
       label: 'conference-room',
       title: 'Conference Room',
       url: '/conference-room',

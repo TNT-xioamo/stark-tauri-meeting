@@ -114,7 +114,7 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
             </div>
             <div className='void operate-user_item flex-center' onClick={() => _handle_live_void()}>{ mediaState?.isVideo ? <FaVideo size={21} /> : <FaVideoSlash size={21} /> }</div>
           </div>
-          <div className='operate-user flex'>
+          <div className='operate-user flex flex-j-b'>
             <div className='operate-user_item flex-center' onClick={() => _handle_screen_share()}>{ mediaState?.isShare ? <MdScreenShare  size={21} /> : <MdStopScreenShare size={21} /> }</div>
             <div className='operate-user_item flex-center' onClick={() => _handle_invite_users()}><AiOutlineUsergroupAdd size={21} /></div>
             <div className='operate-user_item flex-center' onClick={() => _handle_group_users()}><AiOutlineTeam size={21} /></div>
@@ -122,7 +122,7 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
             <div className='operate-user_item flex-center'><PiRecordDuotone size={21} /></div>
             <div className='operate-user_item flex-center'><AiTwotoneSetting size={21} /></div>
           </div>
-          <div className='operate-over flex'><Button danger shape="round">结束会议</Button></div>
+          <div className='operate-over flex flex-j-e'><Button danger shape="round">结束会议</Button></div>
         </div>
       </div>
     </>

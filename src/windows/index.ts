@@ -67,14 +67,15 @@ class Windows {
     win.once('tauri://error', async(e) => {
       console.log('window create error!', e)
     })
-    
+    win.once('tauri://close', () => {
+      console.log('window close!')
+    })
   }
 
   // 开启主进程监听事件
   async listen() {
     // 创建新窗体
     await listen('win-create', (event: any) => {
-      console.log(event)
       this.createWin(JSON.parse(event.payload))
     })
     // 显示窗体
@@ -109,4 +110,4 @@ class Windows {
   }
 }
 
-export default Windows
+export default  new Windows()

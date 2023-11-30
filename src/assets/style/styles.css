@@ -136,3 +136,7 @@ button {
 .flex-j-e {
   justify-content: flex-end;
 }
+
+.flex-j-b {
+  justify-content: space-between;
+}

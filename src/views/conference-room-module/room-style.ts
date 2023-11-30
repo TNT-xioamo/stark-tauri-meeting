@@ -71,8 +71,11 @@ export const ZoomContainer = styled.div`
       .operate-user {
         flex: 2;
         .operate-user_item {
-          margin-left: 20px;
+          /* margin-left: 20px; */
         }
+      }
+      .operate-over {
+        flex: 1;
       }
     }
   }

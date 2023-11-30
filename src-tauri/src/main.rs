@@ -7,7 +7,6 @@ mod tauri_rush;
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
-
 // fn create_win() {
 //     tauri::Builder::default()
 //         .setup(|app| {
