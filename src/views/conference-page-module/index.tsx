@@ -11,17 +11,25 @@ import { useStore } from '@/store'
 function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
   const [modalOpen, setModalOpen]: any = useState(void 0)
   const refIcon = useRef<HTMLDivElement>(null)
-
+  const { roomStore } = useStore()
+  
   const _handle_conference_click = (key?: String) => {
     setModalOpen(key)
   }
   const create_conference_win = async () => {
-    Windows.createWin({
-      label: 'conference-room',
-      title: 'Conference Room',
-      url: '/conference-room',
-      decorations: true
-    })
+    try {
+      const { zoomContainer } = roomStore.zoomInfo
+      if (zoomContainer?.zoomCreate) throw Error('已经创建啦会议')
+      Windows.createWin({
+        label: 'conference-room',
+        title: 'Conference Room',
+        url: '/conference-room',
+        decorations: true
+      })
+      appWindow.onCloseRequested((event) => {
+        event.preventDefault()
+      })
+    } catch (error) {}
   }
   return (
     <>
