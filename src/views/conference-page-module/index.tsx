@@ -28,6 +28,7 @@ function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
       })
       appWindow.onCloseRequested((event) => {
         event.preventDefault()
+        appWindow.minimize()
       })
     } catch (error) {}
   }
