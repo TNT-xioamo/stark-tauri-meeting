@@ -1,5 +1,6 @@
 export interface IUserInfoStore {
-  user_mac?: String | undefined
+  user_mac?: String | undefined,
+  userName?: String | null
 }
 
 export interface IUseZoomStore {

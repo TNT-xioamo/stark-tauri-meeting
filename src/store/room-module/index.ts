@@ -2,7 +2,8 @@ export interface zoomContainerStore {
   zoomName?: String | undefined,
   zoomId?: String | undefined,
   zoomType?: String | undefined,
-  zoomCreate?: Boolean
+  zoomCreate?: Boolean,
+  zoomDestroyed?: boolean
 }
 
 export interface zoomMediaState {
@@ -32,7 +33,8 @@ const roomStore= (): IZoomStore => {
         isShare: false,
       },
       zoomContainer: {
-        zoomCreate: false
+        zoomCreate: false,
+        zoomDestroyed: false
       }
     },
     SET_ZOOM_INFO: function (value: IZoomInfo) {

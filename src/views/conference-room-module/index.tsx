@@ -1,24 +1,26 @@
 import React, { type PropsWithChildren, memo, useEffect, useState } from 'react'
 import { appWindow } from '@tauri-apps/api/window'
-
+import { observer } from 'mobx-react-lite'
 import { Modal } from 'antd'
 
+import { BiWinkTongue } from 'react-icons/bi'
+
+import { useStore } from '@/store'
 import JMSZoomOperate from './children/room-operate'
+import JMSLoading from '@/components/loading'
 import './room-style.css'
 import { ZoomContainer } from './room-style'
 
-function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
 
+function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
+  const [loading, setLoading] = useState(true)
   const { confirm } = Modal
-  const [ clonse, set_clonse ] = useState(false)
+  const { roomStore } = useStore()
 
   const _handle_on_close =  () => {
-    if (clonse) return
-    set_clonse(true)
     appWindow.onCloseRequested(async(event) => {
-      console.error(event)
-      event.preventDefault()
-      const statu = _hanle_close_modal()
+      const statu = await _hanle_close_modal()
+      // event.preventDefault()
       // appWindow.close()
     })
   }
@@ -30,7 +32,7 @@ function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
     return new Promise<void>((resolve, reject) => {
       confirm({
         title: '确定要退出会议吗？',
-        icon: '',
+        icon: <BiWinkTongue size={22} color="#faad14" />,
         okText: '结束会议',
         cancelText: '离开会议',
         onOk: () =>_handle_on_close_room(resolve),
@@ -48,10 +50,11 @@ function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
   return (
     <>
       <ZoomContainer>
+        <JMSLoading />
         <JMSZoomOperate />
       </ZoomContainer>
     </>
   )
 }
 
-export default memo(JMSConferenceRoom)
+export default observer(JMSConferenceRoom)

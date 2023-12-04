@@ -42,6 +42,6 @@ export const _acto_theme = (el: String, cb: any) => {
 }
 
 export const _component_theme = {
-  token: { colorPrimary: '#806b92', colorTextBase: '#fff', colorPrimaryHover: '#806b92' },
+  token: { colorPrimary: '#806b92', colorTextBase: '#fff', colorPrimaryHover: '#806b92', titleColor: '#1f1f1f' },
   components: { Input: { activeBorderColor: '#795a93' }, Button: { groupBorderColor: '#795a93' }}
 }

@@ -1,5 +1,6 @@
 import React, { type PropsWithChildren, memo, useState, useRef } from 'react'
 import { appWindow } from '@tauri-apps/api/window'
+import { observer } from 'mobx-react-lite'
 import Windows from '@/windows'
 import { DiIonic } from 'react-icons/di'
 import { BiSolidPlusCircle, BiSolidChart, BiSolidCalendarCheck } from 'react-icons/bi'
@@ -11,15 +12,14 @@ import { useStore } from '@/store'
 function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
   const [modalOpen, setModalOpen]: any = useState(void 0)
   const refIcon = useRef<HTMLDivElement>(null)
-  const { roomStore } = useStore()
+  const { roomStore, userStore } = useStore()
   
   const _handle_conference_click = (key?: String) => {
     setModalOpen(key)
   }
   const create_conference_win = async () => {
     try {
-      const { zoomContainer } = roomStore.zoomInfo
-      if (zoomContainer?.zoomCreate) throw Error('已经创建啦会议')
+      const { userName } = userStore.userInfo
       Windows.createWin({
         label: 'conference-room',
         title: 'Conference Room',
@@ -60,4 +60,4 @@ function JMSConferenceMain(_props: PropsWithChildren<{}>): JSX.Element {
   )
 }
 
-export default memo(JMSConferenceMain)
+export default observer(JMSConferenceMain)
