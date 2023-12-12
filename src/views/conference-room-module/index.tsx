@@ -13,7 +13,7 @@ import { ZoomContainer } from './room-style'
 
 
 function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const { confirm } = Modal
   const { roomStore } = useStore()
 
@@ -50,7 +50,7 @@ function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
   return (
     <>
       <ZoomContainer>
-        <JMSLoading />
+        { loading ? <JMSLoading /> : void 0 }
         <JMSZoomOperate />
       </ZoomContainer>
     </>

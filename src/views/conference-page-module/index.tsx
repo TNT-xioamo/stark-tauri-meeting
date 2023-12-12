@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren, memo, useState, useRef } from 'react'
+import React, { type PropsWithChildren, useState, useRef } from 'react'
 import { appWindow } from '@tauri-apps/api/window'
 import { observer } from 'mobx-react-lite'
 import Windows from '@/windows'
