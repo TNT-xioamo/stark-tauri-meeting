@@ -36,7 +36,7 @@ function JMSAppAides(_props: PropsWithChildren<{}>) :JSX.Element {
           {
             aidesOpen ? <div ref={aidesRef} className='aides-show scale-up-tr'>
               <div className='aides-label aid-text'>推荐</div>
-              <div className='aides-body flex'>
+              <div className='aides-body flex  aides-animation'>
                 { aidesModle.map(item => {
                   return (
                     <div className='aid-item flex-center' key={ item.key }>

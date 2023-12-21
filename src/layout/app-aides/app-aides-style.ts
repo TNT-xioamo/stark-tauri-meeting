@@ -53,6 +53,9 @@ export const AidesWallpaper = styled.div `
         align-items: center;
         padding-top: 15px;
         justify-content: space-between;
+        &.aides-animation {
+          animation: shutter-in-top 1s linear 0s 1 normal none;
+        }
         .aid-item {
           flex: 30.3%;
           height: 200px;
