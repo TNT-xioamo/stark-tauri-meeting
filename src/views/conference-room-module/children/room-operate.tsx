@@ -2,16 +2,18 @@ import React, { type PropsWithChildren, useEffect, useState, useRef } from 'reac
 import { Button, Watermark } from 'antd'
 
 import { observer } from 'mobx-react-lite'
-import { useStore } from '@/store'
 import { AiOutlineAudio, AiOutlineAudioMuted, AiOutlineTeam, AiOutlineUsergroupAdd, AiTwotoneSetting } from 'react-icons/ai'
 import { FaVideo, FaVideoSlash } from 'react-icons/fa'
 import { MdScreenShare, MdStopScreenShare } from 'react-icons/md'
 import { RiMessage2Fill } from 'react-icons/ri'
 import { PiRecordDuotone } from 'react-icons/pi'
+import { useStore } from '@/store'
+import { _create_peer, _recording_media } from '@/utils'
 
 
 
-function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
+
+function JMSZoomOperate(_props: PropsWithChildren<{ callBack: Function }>): JSX.Element {
   const [userMedia, setUserMedia] = useState([])
   const [audioWave, setAudioWave] = useState(0)
   const { roomStore } = useStore()
@@ -19,38 +21,41 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
   const [mediaStreamTrack, setMediaStreamTrack] = useState<MediaStream>()
 
   const [videoConstraint] = useState({
-    video: { width: { min: 1280}, height: { min: 720}},
+    video: { width: { min: 1280}, height: { min: 720}, facingMode: 'environment' },
     audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true}
   })
   const liveVideo = useRef<HTMLVideoElement>(null)
   const liveAudio = useRef<HTMLAudioElement>(null)
 
 
-  useEffect(() => {}, userMedia)
+  useEffect(() => {
+    _get_user_media()
+  }, userMedia)
+
+  const _get_user_media = () => {
+    _recording_media(videoConstraint, (stream: MediaStream) => {
+      console.error(stream)
+      setMediaStreamTrack(stream)
+      _props.callBack(false)
+    }, () => {})
+    // setMediaStreamTrack(stream)
+    // if (liveVideo.current) {
+    //   liveVideo.current.srcObject = stream
+    //   liveVideo.current.volume = 1.0
+    //   liveVideo.current.play()
+    // }
+    // if (liveAudio.current) {
+    //   liveAudio.current.srcObject = stream
+    //   liveAudio.current.play()
+    // }
+      
+  }
 
   const _get_user_devices = async () => {
     const userDevices = await navigator.mediaDevices.enumerateDevices()
     const mics = userDevices.filter(d => d.kind === 'audioinput')
     const selectedMic = mics[0]
     const constraints = { audio: { deviceId: selectedMic.deviceId }}
-  }
-
-  const _get_user_media = async (media?: string) => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia(videoConstraint)
-      setMediaStreamTrack(stream)
-      if (liveVideo.current) {
-        liveVideo.current.srcObject = stream
-        liveVideo.current.volume = 1.0
-        liveVideo.current.play()
-      }
-      if (liveAudio.current) {
-        liveAudio.current.srcObject = stream
-        liveAudio.current.play()
-      }
-    } catch (error) {
-      
-    }
   }
 
   const _handle_live_void = () => {
@@ -66,6 +71,18 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
       roomStore.SET_MEDIA_STATE({ isVideo: !mediaState?.isVideo })
     } catch (error) {
       
+    }
+  }
+
+  const _handle_main_video_or_audio = (stream: MediaStream) => {
+    if (liveVideo.current) {
+      liveVideo.current.srcObject = stream
+      liveVideo.current.volume = 1.0
+      liveVideo.current.play()
+    }
+    if (liveAudio.current) {
+      liveAudio.current.srcObject = stream
+      liveAudio.current.play()
     }
   }
 
@@ -85,6 +102,7 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
       
     }
   }
+
   const _handle_screen_share = () => {
     try {
       roomStore.SET_MEDIA_STATE({ isShare: !mediaState?.isShare })
@@ -92,11 +110,9 @@ function JMSZoomOperate(_props: PropsWithChildren<{}>): JSX.Element {
       
     }
   }
-  const _handle_invite_users = () => {}
+  const _handle_invite_users = async () => {}
 
-  const _handle_group_users = async () => {
-
-  }
+  const _handle_group_users = async () => {}
 
   return (
     <>

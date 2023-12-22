@@ -21,16 +21,6 @@ export const _get_audio_sevices = async (callBack?: Function, onError?: Function
   }
 }
 
-export const _start_recording = () => {}
-
-/**
- * @param stream 待处理的音频流
- * @returns 返回新音频流
- */
-export const _audio_noise_filtering= (stream: any) => {
-
-}
-
 /**
  * 
  * @param audioTrack 待处理的音频流

@@ -1,4 +1,4 @@
-import React, { type PropsWithChildren, memo, useEffect, useState } from 'react'
+import React, { type PropsWithChildren, useEffect, useState } from 'react'
 import { appWindow } from '@tauri-apps/api/window'
 import { observer } from 'mobx-react-lite'
 import { Modal } from 'antd'
@@ -13,16 +13,12 @@ import { ZoomContainer } from './room-style'
 
 
 function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const { confirm } = Modal
   const { roomStore } = useStore()
 
   const _handle_on_close =  () => {
-    appWindow.onCloseRequested(async(event) => {
-      const statu = await _hanle_close_modal()
-      // event.preventDefault()
-      // appWindow.close()
-    })
+    appWindow.onCloseRequested(async(event) => await _hanle_close_modal())
   }
   useEffect(() => {
     _handle_on_close()
@@ -51,7 +47,7 @@ function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
     <>
       <ZoomContainer>
         { loading ? <JMSLoading /> : void 0 }
-        <JMSZoomOperate />
+        <JMSZoomOperate callBack={ setLoading } />
       </ZoomContainer>
     </>
   )

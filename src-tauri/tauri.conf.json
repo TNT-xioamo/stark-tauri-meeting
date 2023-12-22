@@ -52,6 +52,7 @@
         "decorations": true,
         "titleBarStyle": "Overlay"
       }
-    ]
+    ],
+    "macOSPrivateApi": false
   }
 }
