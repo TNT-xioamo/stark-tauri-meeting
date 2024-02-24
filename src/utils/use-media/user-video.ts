@@ -1,7 +1,7 @@
 export const _video_sevices = async (callBack?: Function, onError?: Function) => {
   try {
     const audioDevices = await navigator.mediaDevices.enumerateDevices()
-    const mics = audioDevices.filter(d => d.kind === 'audioinput')
+    const mics = audioDevices.filter(d => d.kind.includes('audio'))
     const selectedMic = mics[0]
     const constraints = {
       video: { width: { min: 1280}, height: { min: 720}},

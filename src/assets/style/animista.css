@@ -52,7 +52,7 @@
   }
   50%{
     width: 100px;
-    height: 100px;
+    height: 80px;
     border-radius: 30%;
     transform: translateX(-40vh);
     opacity: 1;
@@ -60,7 +60,7 @@
   100% {
     opacity: 1;
     width: 40vw;
-    height: 70vh;
+    height: 50vh;
     border-radius: 15px;
     transform: translateX(-62vh) translateY(-25vh);
   }

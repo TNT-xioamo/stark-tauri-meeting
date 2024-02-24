@@ -7,6 +7,7 @@ import { BiWinkTongue } from 'react-icons/bi'
 
 import { useStore } from '@/store'
 import JMSZoomOperate from './children/room-operate'
+import JMSZoomCamera from './children/room-camera-video'
 import JMSLoading from '@/components/loading'
 import './room-style.css'
 import { ZoomContainer } from './room-style'
@@ -46,8 +47,9 @@ function JMSConferenceRoom(_props: PropsWithChildren<{}>): JSX.Element {
   return (
     <>
       <ZoomContainer>
-        { loading ? <JMSLoading /> : void 0 }
-        <JMSZoomOperate callBack={ setLoading } />
+        {/* { loading ? <JMSLoading /> : void 0 } */}
+        {/* <JMSZoomOperate callBack={ setLoading } /> */}
+        <JMSZoomCamera appId='conference-room' />
       </ZoomContainer>
     </>
   )

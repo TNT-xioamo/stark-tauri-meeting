@@ -28,19 +28,12 @@ export const _get_audio_sevices = async (callBack?: Function, onError?: Function
  */
 
 export const _remove_keyboard_sound = (audioTrack: any) => {
-  const audioCtx = new AudioContext()
-  const newAudioStream: any = audioCtx.createMediaStreamSource(audioTrack.kind)
-
-  for (let i = 0; i < audioTrack.channels.length; i++) {
-    const audioChannel = audioTrack.channels[i]
-    const newAudioChannel = newAudioStream?.createAudioChannel()
-    for (let j = 0; j < audioChannel.samples.length; j++) {
-      const audioSample = audioChannel.samples[j]
-      if (audioSample.hasOwnProperty('keyboard')) {
-        delete audioSample.keyboard
-      }
-    }
-    newAudioStream.addChannel(newAudioChannel)
-  }
+  const audioCtx = new (window.AudioContext)()
+  const newAudioStream: any = audioCtx.createMediaStreamSource(audioTrack)
+  const filter = audioCtx.createBiquadFilter()
+  filter.type = 'lowpass'
+  filter.frequency.value = 1000
+  filter.connect(audioCtx.destination)
+  newAudioStream.connect(filter)
   return newAudioStream
 }

@@ -8,6 +8,9 @@ dependencies:
   '@ad113n/opencv-wasm':
     specifier: ^4.8.0
     version: 4.8.0
+  '@jitsi/react-sdk':
+    specifier: ^1.4.0
+    version: 1.4.0(react-dom@18.2.0)(react@18.2.0)
   '@tauri-apps/api':
     specifier: ^1.4.0
     version: 1.4.0
@@ -1739,6 +1742,16 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@jitsi/react-sdk@1.4.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1dn3WIZNyRuESh5qvBR52PQz/avM0Wl575WtuW2sRaNemx38+I1eHJvA58SNhC3zas1PkxBfjeBqmTUHeJlaCw==}
+    peerDependencies:
+      react: 16 || 17 || 18
+      react-dom: 16 || 17 || 18
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}

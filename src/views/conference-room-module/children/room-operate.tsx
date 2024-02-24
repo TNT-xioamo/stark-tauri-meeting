@@ -8,7 +8,7 @@ import { MdScreenShare, MdStopScreenShare } from 'react-icons/md'
 import { RiMessage2Fill } from 'react-icons/ri'
 import { PiRecordDuotone } from 'react-icons/pi'
 import { useStore } from '@/store'
-import { _create_peer, _recording_media } from '@/utils'
+import { _create_peer, _recording_media, _remove_keyboard_sound } from '@/utils'
 
 
 
@@ -29,26 +29,14 @@ function JMSZoomOperate(_props: PropsWithChildren<{ callBack: Function }>): JSX.
 
 
   useEffect(() => {
-    _get_user_media()
   }, userMedia)
 
   const _get_user_media = () => {
     _recording_media(videoConstraint, (stream: MediaStream) => {
-      console.error(stream)
       setMediaStreamTrack(stream)
       _props.callBack(false)
+      _handle_live_audio(stream)
     }, () => {})
-    // setMediaStreamTrack(stream)
-    // if (liveVideo.current) {
-    //   liveVideo.current.srcObject = stream
-    //   liveVideo.current.volume = 1.0
-    //   liveVideo.current.play()
-    // }
-    // if (liveAudio.current) {
-    //   liveAudio.current.srcObject = stream
-    //   liveAudio.current.play()
-    // }
-      
   }
 
   const _get_user_devices = async () => {
@@ -59,53 +47,23 @@ function JMSZoomOperate(_props: PropsWithChildren<{ callBack: Function }>): JSX.
   }
 
   const _handle_live_void = () => {
-    try {
-      const videoTra = mediaStreamTrack?.getVideoTracks()[0]
-      if (videoTra && mediaState?.isVideo && liveVideo.current) {
-        liveVideo.current.pause()
-        liveVideo.current.srcObject = null
-        videoTra.enabled = true
-        videoTra.stop()
-        console.log(liveVideo)
-      }
-      roomStore.SET_MEDIA_STATE({ isVideo: !mediaState?.isVideo })
-    } catch (error) {
-      
-    }
+
   }
 
-  const _handle_main_video_or_audio = (stream: MediaStream) => {
-    if (liveVideo.current) {
-      liveVideo.current.srcObject = stream
-      liveVideo.current.volume = 1.0
-      liveVideo.current.play()
-    }
-    if (liveAudio.current) {
-      liveAudio.current.srcObject = stream
-      liveAudio.current.play()
-    }
-  }
 
-  const _handle_live_audio = () => {
+  const _handle_live_audio = (stream?: MediaStream) => {
     try {
-      const audioTra: any = mediaStreamTrack?.getAudioTracks()[0]
-      // const recorder = new MediaRecorder(audioTra)
-      if (audioTra && mediaState?.isAudio && liveAudio.current) {
-        liveAudio.current.pause()
-        audioTra.stop()
-      } else {
-        audioTra?.start()
-        liveAudio?.current?.play()
+      if (liveAudio.current) {
+        // liveAudio.current.srcObject = _remove_keyboard_sound(stream ?? mediaStreamTrack)
       }
-      roomStore.SET_MEDIA_STATE({ isAudio: !mediaState?.isAudio })
     } catch (error) {
-      
+      console.error(error)
     }
   }
 
   const _handle_screen_share = () => {
     try {
-      roomStore.SET_MEDIA_STATE({ isShare: !mediaState?.isShare })
+      // roomStore.SET_MEDIA_STATE({ isShare: !mediaState?.isShare })
     } catch (error) {
       
     }

@@ -79,4 +79,13 @@ export const ZoomContainer = styled.div`
       }
     }
   }
+  .zoom-camera {
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    > div {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `

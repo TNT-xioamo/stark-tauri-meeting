@@ -17,7 +17,7 @@ function JMSAppSider(_props: PropsWithChildren<{}>): JSX.Element {
   const menus: MenuProps['items'] = [
     getMenuItem('工作台', 'workbench', <CgScreen color='' />),
     getMenuItem('Group', 'grp', null, [getMenuItem('会议', 'conference', <CgMaze />), getMenuItem('协助', 'assist', <CgCommunity />), getMenuItem('档案馆', 'archives', <CgBot />)], 'group'),
-    getMenuItem('Schedule', 'sch', null, [getMenuItem('空间透镜', 'spatial', <CgScreenMirror />), getMenuItem('碎纸机', 'shredder', <CgInstagram />)], 'group'),
+    getMenuItem('Schedule', 'sch', null, [getMenuItem('应用市场', 'spatial', <CgScreenMirror />), getMenuItem('碎纸机', 'shredder', <CgInstagram />)], 'group'),
   ]
   const _handle_on_select: MenuProps['onClick'] = (e) => {
     _handle_map_bg(e?.key)
