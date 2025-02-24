@@ -64,7 +64,7 @@ export default memo(function JMSHomeMain() {
           </div>
           <div ref={refStart} className='start-modal flex-center'>
             {
-               isStartOpen &&
+              isStartOpen &&
               <Space>
                 <Form ref={refIn} name="signIn" className='form-sign_in'>
                   <h2 className="form__title">Sign In</h2>

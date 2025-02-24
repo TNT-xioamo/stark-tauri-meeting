@@ -33,7 +33,7 @@ export const HomeWallpaper = styled.div`
         background-color: #8178a3;
         border-radius: 50%;
         margin-top: 40px;
-        animation:shadow-drop-2-center .4s cubic-bezier(.25,.46,.45,.94) both;
+        animation: shadow-drop-2-center .4s cubic-bezier(.25,.46,.45,.94) both;
         &:hover {
           animation: heartbeat 1.5s ease-in-out infinite both;
           filter: drop-shadow(0 0 2em #6addff);

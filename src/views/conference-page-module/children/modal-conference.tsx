@@ -50,7 +50,7 @@ function JMSModalConference(_props: PropsWithChildren<{ isModalOpen: String | un
   const _render_modal_booking = () => {
     return (
       <div className="conference-modal_booking modal-item">
-         <div className='container-title flex'><AiFillPlusCircle color="#ff5f58" onClick={() => setClose(void 0)} /></div>
+        <div className='container-title flex'><AiFillPlusCircle color="#ff5f58" onClick={() => setClose(void 0)} /></div>
         预约会议
       </div>
     )

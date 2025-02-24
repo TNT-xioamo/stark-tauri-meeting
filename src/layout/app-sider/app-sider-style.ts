@@ -7,7 +7,7 @@ type Custom = {
 export const SiderWallpaper = styled.div<Custom>`
   z-index: 2;
   height: calc(100% - 85px);
-  width: 235px;
+  max-width: 235px;
   border-radius: 10px;
   background-image: linear-gradient(${props => props?.theme.sider.top }, ${props => props?.theme.sider.bottom });
   padding: 5px 7px;
